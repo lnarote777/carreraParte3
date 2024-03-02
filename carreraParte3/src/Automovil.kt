@@ -11,7 +11,7 @@ open class Automovil(
     capacidadCombustible: Float,
     combustibleActual: Float,
     kilometrosActuales: Float,
-    private val esHibrido: Boolean
+    val esHibrido: Boolean
 ) : Vehiculo(nombre, marca, modelo, capacidadCombustible, combustibleActual, kilometrosActuales) {
 
     companion object {
@@ -48,7 +48,7 @@ open class Automovil(
      *
      * @return El nivel de combustible restante después de realizar el derrape, como [Float].
      */
-    fun realizaDerrape(): Float {
+    open fun realizaDerrape(): Float {
         if (esHibrido) {
             actualizaCombustible(KM_POR_DERRAPE_ELECTRICO)
         }
