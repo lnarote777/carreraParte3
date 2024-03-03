@@ -1,6 +1,5 @@
 import kotlin.math.pow
 import kotlin.math.roundToInt
-import kotlin.random.Random
 
 /**
  * Extiende la clase [Float] para permitir el redondeo del número a un número específico de posiciones decimales.
@@ -11,6 +10,21 @@ import kotlin.random.Random
 fun Float.redondear(posiciones: Int): Float {
     val factor = 10.0.pow(posiciones.toDouble()).toFloat()
     return (this * factor).roundToInt() / factor
+}
+
+/**
+ * Capitaliza la primera letra de cada palabra de una cadena.
+ *
+ * @return Una nueva cadena con la primera letra de cada palabra capitalizada.
+ */
+fun String.capitalizar(): String{
+    var palabrasFrase = this.split(" ")
+    val frase = mutableListOf<String>()
+    for (i in palabrasFrase){
+        val mayuscula = i.capitalize()
+        frase.add(mayuscula)
+    }
+    return frase.joinToString(" ")
 }
 
 /**
@@ -43,9 +57,25 @@ fun main() {
 //    println("\n* Historial Detallado:\n")
 //    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
 
-    val gestor : Gestor = Gestor()
-    val num = gestor.pedirParticipantes()
-    gestor.pedirNombre(num)
+
+    val numParticipantes = Gestor().pedirParticipantes()
+
+    val vehiculos = Gestor().listaVehiculos(numParticipantes)
+
+    val carrera = Carrera("Gran Carrera de Filigranas", 1000f, vehiculos)
+
+    println("\n*** ${carrera.nombreCarrera} ***\n")
+    carrera.iniciarCarrera()
+
+    val resultados = carrera.obtenerResultados()
+
+    println("* Clasificación:\n")
+    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
+
+    println("\n" + resultados.joinToString("\n") { it.toString() })
+
+    println("\n* Historial Detallado:\n")
+    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
 }
 
 
