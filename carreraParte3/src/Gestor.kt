@@ -1,4 +1,4 @@
-import javax.swing.border.EmptyBorder
+
 import kotlin.random.Random
 
 class Gestor {
@@ -17,6 +17,11 @@ class Gestor {
 
     private fun tipoQuad() = listOf("Cuadriciclos ligeros", "Cuadriciclos no ligeros" , "Vehículos especiales").random()
 
+    /**
+     * Solicita al usuario el número de participantes y devuelve el número ingresado.
+     *
+     * @return El número de participantes ingresado por el usuario.
+     */
     fun pedirParticipantes(): Int {
 
         var numParticipantes: Int
@@ -37,6 +42,12 @@ class Gestor {
         return numParticipantes
     }
 
+    /**
+     * Genera una lista de vehículos para un número específico de participantes.
+     *
+     * @param numParticipantes El número total de participantes que necesitan vehículos.
+     * @return Una lista de vehículos generada para los participantes.
+     */
     fun listaVehiculos(numParticipantes: Int): List<Vehiculo>{
         var par = numParticipantes
         var cont = 1
@@ -78,7 +89,12 @@ class Gestor {
         return vehiculos
     }
 
-    //mirar si hay otra forma de hacerlo
+    /**
+     * Genera un vehículo aleatorio basado en el nombre proporcionado.
+     *
+     * @param nombre El nombre del vehículo.
+     * @return Un objeto de vehículo generado aleatoriamente.
+     */
     fun vehiculoAleatorio(nombre: String): Vehiculo {
 
         val num = (1..4).random()
