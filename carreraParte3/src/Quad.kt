@@ -6,9 +6,10 @@ class Quad(
     combustibleActual: Float,
     kilometrosActuales: Float,
     cilindrada: Int,
+    val tipo : String
 ) : Motocicleta(nombre, marca, modelo, capacidadCombustible, combustibleActual, kilometrosActuales, cilindrada) {
 
-    val tipo: String = listOf("Cuadriciclos ligeros", "Cuadriciclos no ligeros" , "Vehículos especiales").random()
+
 
     override fun calcularAutonomia(): Float {
         return (super.calcularAutonomia()/2).redondear(2)

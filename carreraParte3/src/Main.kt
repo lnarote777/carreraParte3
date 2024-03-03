@@ -1,5 +1,6 @@
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 /**
  * Extiende la clase [Float] para permitir el redondeo del número a un número específico de posiciones decimales.
@@ -42,21 +43,9 @@ fun main() {
 //    println("\n* Historial Detallado:\n")
 //    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
 
-
-    val vehiculos = mutableListOf<Vehiculo>()
-
-
-    print("Introduce el numero de participantes: ")
-    val numParticipantes = readln().toInt()
-
-    do {
-        val cont = 1
-        val vehiculoRandom = TODO()
-        println("Nombre del vehículo $cont -> $")
-
-
-        vehiculos.add(vehiculoRandom)
-    }while (cont != numParticipantes)
-
-
+    val gestor : Gestor = Gestor()
+    val num = gestor.pedirParticipantes()
+    gestor.pedirNombre(num)
 }
+
+
